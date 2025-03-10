@@ -1,4 +1,5 @@
 // src/components/App.js - Componente principal
+import React, { useState } from 'react';
 import ProdutoCard from './ProdutoCard';
 import CarrinhoCompras from './CarrinhoCompras';
 

@@ -1,4 +1,6 @@
 // src/components/CarrinhoCompras.js - Componente do carrinho
+import React from 'react';
+
 const CarrinhoCompras = ({ itens, removerItem }) => {
     // Calcula o valor total do carrinho
     const total = itens.reduce((acc, item) =>

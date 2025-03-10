@@ -1,4 +1,6 @@
 // src/components/ProdutoCard.js - Componente para exibir um produto
+import React from 'react';
+
 const ProdutoCard = ({ produto, adicionarAoCarrinho }) => {
   const { nome, preco, estoque } = produto;
   

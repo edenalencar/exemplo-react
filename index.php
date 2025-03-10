@@ -10,6 +10,18 @@ $produtos = [
 
 // Converte para JSON para passar ao JavaScript
 $produtosJson = json_encode($produtos);
+
+// Lê o arquivo manifest.json
+$manifest = json_decode(file_get_contents('./dist/manifest.json'), true);
+
+// Obtém os caminhos dos arquivos a partir do manifesto
+$cssFile = $manifest['main.css'] ?? './dist/css/main.css';
+$jsFile = $manifest['main.js'] ?? './dist/js/bundle.js';
+
+// Remove o prefixo 'auto/' para obter o caminho correto
+$cssFile = str_replace('auto/', './dist/', $cssFile);
+$jsFile = str_replace('auto/', './dist/', $jsFile);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +31,7 @@ $produtosJson = json_encode($produtos);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Virtual - PHP + React + Bootstrap</title>
     <!-- No ambiente de produção, estes seriam os arquivos gerados pelo Webpack -->
-    <link rel="stylesheet" href="./dist/css/main.3237c9a39221fc9b37d6.css">
+    <link rel="stylesheet" href="<?php echo $cssFile; ?>">
 </head>
 <body>
     <div class="container py-4">
@@ -38,7 +50,7 @@ $produtosJson = json_encode($produtos);
         </script>
         
         <!-- No ambiente de produção, este seria o arquivo gerado pelo Webpack -->
-        <script src="./dist/js/bundle.4debf016c6a5360a2964.js"></script>
+        <script src="<?php echo $jsFile; ?>"></script>
     </div>
 </body>
 </html>
